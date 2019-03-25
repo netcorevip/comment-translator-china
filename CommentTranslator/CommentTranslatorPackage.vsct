@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+
+  <Commands package="guidCommentTranslatorPackage">
+
+    <Groups>
+      <Group guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200"/>
+      <Group guid="guidCommentTranslatorPackageCmdSet" id="MyMenuToolGroup" priority="0x0800">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
+      </Group>
+    </Groups>
+
+    <!--Buttons section. -->
+    <!--此部分定义用户可以与之交互的元素，如菜单命令或工具栏中的按钮或组合框. -->
+    <Buttons>
+      <!--要定义菜单组，您必须指定其ID，父菜单及其显示优先级。
+           默认情况下，该命令可见并启用。 如果您需要更改可见性，状态等，则可以使用
+           CommandFlag节点。
+         您可以添加多个CommandFlag节点，例如：
+              <CommandFlag> DefaultInvisible</ CommandFlag>
+              <CommandFlag> DynamicVisibility</ CommandFlag>
+           如果您不想在命令旁边显示图像，请删除图标节点/> -->
+      <Button guid="guidCommentTranslatorPackageCmdSet" id="CommentTranslatorId" priority="0x0100" type="Button">
+        <Parent guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>翻译</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidCommentTranslatorPackageCmdSet" id="ToggleAutoTranslatorId" priority="0x0100" type="Button">
+        <Parent guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>切换自动翻译</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidCommentTranslatorPackageCmdSet" id="GetTKKId" priority="0x0100" type="Button">
+        <Parent guid="guidCommentTranslatorPackageCmdSet" id="MyMenuToolGroup" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>设置TKK值</ButtonText>
+        </Strings>
+      </Button>
+
+    </Buttons>
+
+
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="Resources\translate.png" usedList="bmpPic1"/>
+    </Bitmaps>
+  </Commands>
+
+
+
+
+
+
+
+  <!--在编辑文件里面显示翻译按钮-->
+  <CommandPlacements>
+
+    <!--测试此项是否在打开的cs文件上显示-->
+    <CommandPlacement guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200">
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200">
+      <Parent guid="CMDSETID_HtmEdGrp" id="IDMX_HTM_SOURCE_SCRIPT" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200">
+      <Parent guid="CMDSETID_HtmEdGrp" id="IDMX_HTM_SOURCE_HTML" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200">
+      <Parent guid="CMDSETID_HtmEdGrp" id="IDMX_HTM_SOURCE_ASPX" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200">
+      <Parent guid="CMDSETID_HtmEdGrp" id="IDMX_HTM_SOURCE_ASAX" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200">
+      <Parent guid="CMDSETID_HtmEdGrp" id="IDMX_HTM_SOURCE_ASPX_CODE" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200">
+      <Parent guid="CMDSETID_HtmEdGrp" id="IDMX_HTM_SOURCE_ASAX_CODE" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200">
+      <Parent guid="CMDSETID_HtmEdGrp" id="IDMX_HTM_SOURCE_ASPX_CODE_VB" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200">
+      <Parent guid="CMDSETID_HtmEdGrp" id="IDMX_HTM_SOURCE_ASAX_CODE_VB" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200">
+      <Parent guid="CMDSETID_HtmEdGrp" id="IDMX_HTM_SOURCE_ASMX_CODE" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200">
+      <Parent guid="CMDSETID_HtmEdGrp" id="IDMX_HTM_SOURCE_ASMX_CODE_VB" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200">
+      <Parent guid="CMDSETID_CssEdGrp" id="IDM_CTX_SOURCE" />
+    </CommandPlacement>
+    <CommandPlacement guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200">
+      <Parent guid="XamlEditorWindows" id="IDMX_XAML_SOURCE_BASIC"/>
+    </CommandPlacement>
+    <!--new-->
+    <CommandPlacement guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200">
+      <Parent guid="GuidVisualStudioHTMLDocumentContextMenu" id="IDVisualStudioHTMLDocumentContextMenu"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200">
+      <Parent guid="GuidVisualStudioCSSDocumentContextMenu" id="IDVisualStudioCSSDocumentContextMenu"/>
+    </CommandPlacement>
+
+    <CommandPlacement guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200">
+      <Parent guid="jsEditorCommandSet" id="jsContextMenu"/>
+    </CommandPlacement>
+  </CommandPlacements>
+
+  <!--绑定快捷键-->
+  <KeyBindings>
+    <KeyBinding guid="guidCommentTranslatorPackageCmdSet" id="CommentTranslatorId" key1="Z" mod1="ALT" editor="guidVSStd97"/>
+    <KeyBinding guid="guidCommentTranslatorPackageCmdSet" id="ToggleAutoTranslatorId" key1="Z" mod1="ALT Shift" editor="guidVSStd97"/>
+  </KeyBindings>
+
+  <Symbols>
+    <!-- 这是包guid -->
+    <GuidSymbol name="guidCommentTranslatorPackage" value="{2e2206c4-ab10-44d9-a016-aedfe6a8975f}" />
+
+    <!-- 这是用于将菜单命令组合在一起的guid -->
+    <GuidSymbol name="guidCommentTranslatorPackageCmdSet" value="{284ee4d1-edc6-4ed0-bf84-d45aeebf593c}">
+      <IDSymbol name="MyMenuGroup" value="0x1020" />
+      <IDSymbol name="MyMenuToolGroup" value="0x1021" />
+      <IDSymbol name="CommentTranslatorId" value="0x0100" />
+      <IDSymbol name="ToggleAutoTranslatorId" value="0x0101" />
+      <IDSymbol name="GetTKKId" value="0x0111" />
+    </GuidSymbol>
+
+    <GuidSymbol name="CMDSETID_CssEdGrp" value="{A764E896-518D-11d2-9A89-00C04F79EFC3}">
+      <IDSymbol name="IDM_CTX_SOURCE" value="0x102" />
+    </GuidSymbol>
+
+    <GuidSymbol name="CMDSETID_HtmEdGrp" value="{d7e8c5e1-bdb8-11d0-9c88-0000f8040a53}">
+      <IDSymbol name="IDMX_HTM_SOURCE_BASIC" value="0x32" />
+      <IDSymbol name="IDMX_HTM_SOURCE_HTML" value="0x33" />
+      <IDSymbol name="IDMX_HTM_SOURCE_SCRIPT" value="0x34" />
+      <IDSymbol name="IDMX_HTM_SOURCE_ASPX" value="0x35" />
+      <IDSymbol name="IDMX_HTM_SOURCE_ASAX" value="0x3B" />
+      <IDSymbol name="IDMX_HTM_SOURCE_ASPX_CODE" value="0x36" />
+      <IDSymbol name="IDMX_HTM_SOURCE_ASAX_CODE" value="0x3C" />
+      <IDSymbol name="IDMX_HTM_SOURCE_ASPX_CODE_VB" value="0x37" />
+      <IDSymbol name="IDMX_HTM_SOURCE_ASAX_CODE_VB" value="0x3D" />
+      <IDSymbol name="IDMX_HTM_SOURCE_ASMX_CODE" value="0x38" />
+      <IDSymbol name="IDMX_HTM_SOURCE_ASMX_CODE_VB" value="0x39" />
+    </GuidSymbol>
+
+    <GuidSymbol name="GuidVisualStudioCSSWindowContextMenu" value="{a764e896-518d-11d2-9a89-00c04f79efc3}">
+      <IDSymbol name="IDVisualStudioCSSWindowContextMenu" value="0x102" />
+    </GuidSymbol>
+    <GuidSymbol name="GuidVisualStudioCSSDocumentContextMenu" value="{64da400e-b4ad-4d67-aa92-4b7acb01ecd5}">
+      <IDSymbol name="IDVisualStudioCSSDocumentContextMenu" value="0x2" />
+    </GuidSymbol>
+    <GuidSymbol name="GuidVisualStudioHTMLWindowContextMenu" value="{d7e8c5e1-bdb8-11d0-9c88-0000f8040a53}">
+      <IDSymbol name="IDVisualStudioASPXWindowContextMenu" value="0x35" />
+      <IDSymbol name="IDVisualStudioASPXCodeWindowContextMenu" value="0x36" />
+      <IDSymbol name="IDVisualStudioHTMLWindowContextMenu" value="0x33" />
+      <IDSymbol name="IDVisualStudioScriptWindowContextMenu" value="0x34" />
+    </GuidSymbol>
+    <GuidSymbol name="GuidVisualStudioHTMLDocumentContextMenu" value="{78f03954-2fb8-4087-8ce7-59d71710b3bb}">
+      <IDSymbol name="IDVisualStudioHTMLDocumentContextMenu" value="0x1" />
+    </GuidSymbol>
+    <GuidSymbol name="GuidVisualStudioJSONDocumentContextMenu" value="{f718ca06-cf4f-4a0c-9106-e79e9ee5e7cd}">
+      <IDSymbol name="IDVisualStudioJSONDocumentContextMenu" value="0x3" />
+    </GuidSymbol>
+    <GuidSymbol name="XamlEditorWindows" value="{4C87B692-1202-46AA-B64C-EF01FAEC53DA}">
+      <IDSymbol name="IDMX_XAML_SOURCE_BASIC" value="0x0103"/>
+    </GuidSymbol>
+    <GuidSymbol name="jsEditorCommandSet" value="{D309F791-903F-11D0-9EFC-00A0C911004F}">
+      <IDSymbol name="jsContextMenu" value="0x040d"/>
+      <!-- 52 in hex is 0x0034 -->
+    </GuidSymbol>
+
+    <GuidSymbol name="guidImages" value="{7739b59e-19f6-420e-8597-8af69c377a6a}" >
+      <IDSymbol name="bmpPic1" value="1" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
