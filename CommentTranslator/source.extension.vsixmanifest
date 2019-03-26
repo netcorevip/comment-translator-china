@@ -3,7 +3,7 @@
     <Metadata>
         <Identity Id="9EE09180-C729-4369-9E1B-4FEAB1C3C0D0" Version="1.0" Language="zh-CN" Publisher="Jia" />
         <DisplayName>Comment Translator China</DisplayName>
-        <Description xml:space="preserve">选择右键翻译，或打开文件时自动翻译注释的扩展。</Description>
+        <Description xml:space="preserve">选择内容右键翻译，或打开文件时自动翻译注释的扩展。</Description>
         <License>Resources\LICENSE</License>
         <Icon>Resources\translate3x.png</Icon>
         <PreviewImage>Resources\translate4x.png</PreviewImage>

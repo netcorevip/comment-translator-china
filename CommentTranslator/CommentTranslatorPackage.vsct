@@ -41,7 +41,7 @@
 
       <Button guid="guidCommentTranslatorPackageCmdSet" id="GetTKKId" priority="0x0100" type="Button">
         <Parent guid="guidCommentTranslatorPackageCmdSet" id="MyMenuToolGroup" />
-        <Icon guid="guidImages" id="bmpPic1" />
+        <Icon guid="guidImages" id="bmpPic1"/>
         <Strings>
           <ButtonText>设置TKK值</ButtonText>
         </Strings>
