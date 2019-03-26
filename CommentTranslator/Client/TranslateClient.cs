@@ -18,7 +18,6 @@ namespace CommentTranlsator.Client
         private const string METHOD = "POST";
 
         private Settings _settings;
-
         public TranslateClient(Settings settings)
         {
             _settings = settings;
@@ -47,7 +46,6 @@ namespace CommentTranlsator.Client
             request.Headers.Add("from-language", _settings.AutoDetect ? "auto" : _settings.TranslateFrom);
             request.Headers.Add("to-language", _settings.TranslateTo);
             // request.Headers.Add("auto-detect-language", _settings.AutoDetect.ToString());
-
             return await Execute(request);
         }
     }

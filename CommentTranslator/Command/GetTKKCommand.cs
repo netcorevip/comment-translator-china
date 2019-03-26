@@ -167,11 +167,6 @@ namespace CommentTranslator
                 outputWindowPane.OutputString(text);
             }
         }
-
-
-
-
-
         public void ShowMessageBox(string mes)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
