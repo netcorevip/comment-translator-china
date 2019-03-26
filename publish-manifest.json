@@ -10,5 +10,5 @@
   "publisher": "netcorevip", //出版商的名称。 需要。
   "private": false, // 指定上传时扩展名是否应公开。 默认为false。
   "qna": true, //指定扩展名是否应包含问答部分。 默认为true。
-  "repo": "https://github.com/MyPublisherName/MyVsixExtension" // 不需要。
+  "repo": "https://github.com/corevip/comment-translator-china" // 不需要。
 }
