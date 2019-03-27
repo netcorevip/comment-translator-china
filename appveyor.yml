@@ -21,6 +21,4 @@ build_script:
   #推送到Artifacts，发布到图库
 after_test:
   - ps: Vsix-PushArtifacts | Vsix-PublishToGallery
-
-publish:
-- ps:publish-vsix.ps1
+  - ps:publish-vsix.ps1
