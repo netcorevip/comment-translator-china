@@ -1,69 +1,93 @@
-# Comment Translator
+# Comment Translator China
 
-[![Build status](https://ci.appveyor.com/api/projects/status/fe6mld9pvrane5wb?svg=true)](https://ci.appveyor.com/project/thuantan2060/comment-translator)
+[![Build status](https://ci.appveyor.com/api/projects/status/j2dx6u8lpwwi75gn?svg=true)](https://ci.appveyor.com/project/corevip/comment-translator-china)
 
-<!-- Update the VS Gallery link after you upload the VSIX-->
-Download this extension from the [VS Gallery](https://visualstudiogallery.msdn.microsoft.com/b80c6a19-fea5-4abd-a394-84cf8a56ecc4)
-or get the [CI build](http://vsixgallery.com/extension/c90fdb4d-7351-4205-9d62-159428df15d9/).
+从[marketplace](https://#)下载此扩展程序
 
-----------------------------------------
+------
 
-Extension of visual studio 2017 that automatic translate comment in you open file.
+在打开文件中自动翻译注释的visual studio 2017扩展。
 
-See the [change log](CHANGELOG.md) for changes and road map.
+因为[Comment Translator](https://marketplace.visualstudio.com/items?itemName=NguynThunTan.CommentTranslator)扩展在中国(你懂滴原因)无法访问配置的翻译地址，
 
-## Features
+现修改为使用[https://translate.google.cn/](https://translate.google.cn/)翻译。
 
-- Auto translate comment in opening file.
-- Manual translate selected text with right-click (or Ctrl-Shift-T)
 
-### Automatic translate comment in opening file
-Commnent in you opening file will be translate to language you were setting.
 
-![Auto Translate](Images/Auto-translate.png)
+### 初始化设置
 
-#### Support Languages
-  - CSharp
-  - C/C++
-  - FSharp
-  - Visual Basic
-  - Html
-  - CSS
-  - JavaScript/TypeScript
-  - Xml
-  - Xaml
-  - Python
-  - Razor
-#### Toggle on/off
-You can turn auto translate on/off by right click and choose in menu or use option page
+需要设置谷歌TKK值才能使用翻译功能，下一步骤自动设置
 
-![Toggle Auto Translate](Images/Toggle-Auto-Translate.png)
-### Manual translate selected text
-Translate selected text by right-click or shortcut Ctrl-Shift-T
+[![设置](Images/Options.png)
 
-![Manual Translate](Images/Manual-Translate.png)
-#### Auto select line if not selected text
-- Not select text
+### 自动设置TKK
 
-![Not Selected Text](Images/Not-Selected-Text.png)
-- Auto selecte and translate line
+[^注]: 如果获取失败打开浏览器手动获取tkk设置
 
-![Auto Selecte Line](Images/Auto-Selecte-Line.png)
-#### Copy translated text by one-click
+![自动设置tkk](Images/SetTkk.gif)
 
-![Copy Translated Text](Images/Copy-Translated-Text.png)
-### Setting translate
 
-![Options](Images/Options.png)
-## Contribute
-Check out the [contribution guidelines](CONTRIBUTING.md)
-if you want to contribute to this project.
 
-For cloning and building this project yourself, make sure
-to install the
-[Extensibility Tools 2017](https://visualstudiogallery.msdn.microsoft.com/ab39a092-1343-46e2-b0f1-6a3f91155aa6)
-extension for Visual Studio which enables some features
-used by this project.
+
+
+## 功能
+
+- 手动翻译所选文本并单击鼠标右键（或Alt+Z）
+- 自动翻译打开文件中的注释。
+
+### 手动翻译
+
+- 通过右键单击或快捷键Alt+Z来翻译所选文本
+- 如果未选择文本，则自动选择行
+- 一键复制翻译的文本
+
+![手动翻译](Images/Auto-Selecte-Line.gif)
+
+
+
+
+
+### 自动翻译
+
+#### 支持语言文件
+
+- CSharp
+- C/C++
+- FSharp
+- Visual Basic
+- Html
+- CSS
+- JavaScript/TypeScript
+- Xml
+- Xaml
+- Python
+- Razor
+
+#### 打开/关闭打开文件自动翻译功能
+
+- 右键单击打开/关闭自动翻译或者快捷键ALT+Shift+Z
+- 工具->选项->Comment Translator China->里面设置打开/关闭
+
+![SetAuto](Images/SetAuto.gif)
+
+
+
+### 在打开文件中自动翻译
+
+[^注]: 已打开文件，关闭文件重新打开
+
+![自动翻译注释](Images/Auto-File-translate.gif)
+
+
+
+来源：[comment-translator](https://github.com/thuantan2060/comment-translator/)基于此项目修改
+
+
+
+## 贡献
+
+如果您想为此项目做出贡献，请查看[贡献指南](CONTRIBUTING.md)。
 
 ## License
+
 [Apache 2.0](LICENSE)
