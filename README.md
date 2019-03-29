@@ -1,8 +1,8 @@
 # Comment Translator China
 
-[![Build status](https://dev.azure.com/netcorevip/Builds Git/_apis/build/status/comment-translator-china-CI)](https://dev.azure.com/netcorevip/Builds Git/_build/latest?definitionId=9)[![Build status](https://ci.appveyor.com/api/projects/status/j2dx6u8lpwwi75gn?svg=true)](https://ci.appveyor.com/project/corevip/comment-translator-china)
+[![Build status](https://dev.azure.com/netcorevip/BuildsGit/_apis/build/status/comment-translator-china-CI)](https://dev.azure.com/netcorevip/BuildsGit/_build/latest?definitionId=9)[![Build status](https://ci.appveyor.com/api/projects/status/j2dx6u8lpwwi75gn?svg=true)](https://ci.appveyor.com/project/corevip/comment-translator-china)
 
-从[marketplace](https://#)下载此扩展程序
+从[marketplace](https://marketplace.visualstudio.com/items?itemName=netcorevip.CommentTranslatorChina)下载此扩展程序
 
 ------
 
