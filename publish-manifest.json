@@ -2,10 +2,11 @@
   "$schema": "http://json.schemastore.org/vsix-publish",
   "categories": [ "build", "coding" ], //扩展的类别。 需要1到3个类别。
   "identity": {
-    "internalName": "9EE09180-C729-4369-9E1B-4FEAB1C3C0D0" //如果未指定，我们尝试从vsixmanifest文件中的扩展名的显示名称生成名称。
+    "internalName": "CommentTranslatorChina" //如果未指定，我们尝试从vsixmanifest文件中的扩展名的显示名称生成名称。
     //如果显示名称不是扩展名的实际名称，则为必需。
+    //中间不能有空格
   },
-  "overview": "README.md", // 上传到Marketplace的“自述”文件的路径。 需要。
+  "overview": "overview.md", // 上传到Marketplace的“自述”文件的路径。 需要。
   "priceCategory": "free", // “免费”，“试用”或“付费”。 默认为“免费”。
   "publisher": "netcorevip", //出版商的名称。 需要。
   "private": false, // 指定上传时扩展名是否应公开。 默认为false。

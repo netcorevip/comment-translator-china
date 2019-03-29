@@ -121,7 +121,7 @@
     <value>Comment Translator China</value>
   </data>
   <data name="112" xml:space="preserve">
-    <value>选择内容右键翻译，或打开文件时自动翻译注释的扩展。</value>
+    <value>Extension of visual studio that automatic translate comment in you open file.</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="400" type="System.Resources.ResXFileRef, System.Windows.Forms">

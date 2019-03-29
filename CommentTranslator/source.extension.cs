@@ -9,7 +9,7 @@ namespace CommentTranslatorChina
     {
         public const string Id = "9EE09180-C729-4369-9E1B-4FEAB1C3C0D0";
         public const string Name = "Comment Translator China";
-        public const string Description = @"选择内容右键翻译，或打开文件时自动翻译注释的扩展。";
+        public const string Description = @"Extension of visual studio that automatic translate comment in you open file.";
         public const string Language = "zh-CN";
         public const string Version = "1.0";
         public const string Author = "Jia";
