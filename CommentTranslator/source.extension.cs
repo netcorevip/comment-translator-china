@@ -11,7 +11,7 @@ namespace CommentTranslatorChina
         public const string Name = "Comment Translator China";
         public const string Description = @"Extension of visual studio that automatic translate comment in you open file.";
         public const string Language = "zh-CN";
-        public const string Version = "1.0";
+        public const string Version = "1.1";
         public const string Author = "Jia";
         public const string Tags = "translate, comment";
     }
