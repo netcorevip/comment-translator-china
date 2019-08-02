@@ -4,7 +4,6 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using CommentTranlsator.Client;
@@ -14,8 +13,6 @@ using CommentTranslator.Util;
 using EnvDTE80;
 using EnvDTE;
 using System.Diagnostics;
-using System.Globalization;
-using Microsoft.VisualStudio.Shell.Interop;
 
 namespace CommentTranslator
 {

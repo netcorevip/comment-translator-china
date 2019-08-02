@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace RangeTree
+﻿namespace RangeTree
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
     /// A node of the range tree. Given a list of items, it builds its subtree. Also contains methods to query the subtree. Basically, all interval tree logic is here.
     /// </summary>
@@ -30,10 +30,10 @@ namespace RangeTree
                 this.rangeComparer = rangeComparer;
             }
 
-            center = default(TKey);
-            leftNode = null;
-            rightNode = null;
-            items = null;
+            this.center = default(TKey);
+            this.leftNode = null;
+            this.rightNode = null;
+            this.items = null;
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace RangeTree
             endPoints.Sort();
 
             // the median is used as center value
-            center = endPoints[endPoints.Count / 2];
+            this.center = endPoints[endPoints.Count / 2];
             this.items = new List<T>();
             
             var left = new List<T>();
@@ -73,11 +73,11 @@ namespace RangeTree
             {
                 var range = o.Range;
 
-                if (range.To.CompareTo(center) < 0)
+                if (range.To.CompareTo(this.center) < 0)
                 {
                     left.Add(o);
                 }
-                else if (range.From.CompareTo(center) > 0)
+                else if (range.From.CompareTo(this.center) > 0)
                 {
                     right.Add(o);
                 }
@@ -100,12 +100,12 @@ namespace RangeTree
             // create left and right nodes, if there are any items
             if (left.Count > 0)
             {
-                leftNode = new RangeTreeNode<TKey, T>(left, this.rangeComparer);
+                this.leftNode = new RangeTreeNode<TKey, T>(left, this.rangeComparer);
             }
 
             if (right.Count > 0)
             {
-                rightNode = new RangeTreeNode<TKey, T>(right, this.rangeComparer);
+                this.rightNode = new RangeTreeNode<TKey, T>(right, this.rangeComparer);
             }
         }
 
@@ -119,9 +119,9 @@ namespace RangeTree
             var results = new List<T>();
 
             // If the node has items, check their ranges.
-            if (items != null)
+            if (this.items != null)
             {
-                foreach (var o in items)
+                foreach (var o in this.items)
                 {
                     if (o.Range.From.CompareTo(value) > 0)
                     {
@@ -136,13 +136,13 @@ namespace RangeTree
 
             // go to the left or go to the right of the tree, depending
             // where the query value lies compared to the center
-            if (value.CompareTo(center) < 0 && leftNode != null)
+            if (value.CompareTo(this.center) < 0 && this.leftNode != null)
             {
-                results.AddRange(leftNode.Query(value));
+                results.AddRange(this.leftNode.Query(value));
             }
-            else if (value.CompareTo(center) > 0 && rightNode != null)
+            else if (value.CompareTo(this.center) > 0 && this.rightNode != null)
             {
-                results.AddRange(rightNode.Query(value));
+                results.AddRange(this.rightNode.Query(value));
             }
 
             return results;
@@ -158,9 +158,9 @@ namespace RangeTree
             var results = new List<T>();
 
             // If the node has items, check their ranges.
-            if (items != null)
+            if (this.items != null)
             {
-                foreach (var o in items)
+                foreach (var o in this.items)
                 {
                     if (o.Range.From.CompareTo(range.To) > 0)
                     {
@@ -175,14 +175,14 @@ namespace RangeTree
 
             // go to the left or go to the right of the tree, depending
             // where the query value lies compared to the center
-            if (range.From.CompareTo(center) < 0 && leftNode != null)
+            if (range.From.CompareTo(this.center) < 0 && this.leftNode != null)
             {
-                results.AddRange(leftNode.Query(range));
+                results.AddRange(this.leftNode.Query(range));
             }
 
-            if (range.To.CompareTo(center) > 0 && rightNode != null)
+            if (range.To.CompareTo(this.center) > 0 && this.rightNode != null)
             {
-                results.AddRange(rightNode.Query(range));
+                results.AddRange(this.rightNode.Query(range));
             }
 
             return results;

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace RangeTree
+﻿namespace RangeTree
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
+
     /// <summary>
     /// The async range tree implementation. Keeps a root node and forwards all queries to it. Whenenver new items are added or items are removed, the tree goes "out of sync" and when the next query is started, the tree is being rebuilt in an async task. During the rebuild, queries are still done on the old tree plus on the items currently not part of the tree. If items were removed, these are filtered out. there is no need to wait for the rebuild to finish in order to return the query results.
     /// </summary>
@@ -35,7 +35,7 @@ namespace RangeTree
         /// </value>
         public IEnumerable<T> Items
         {
-            get { return rangeTree.Items.Concat(addedItemsRebuilding).Concat(addedItems); }
+            get { return this.rangeTree.Items.Concat(this.addedItemsRebuilding).Concat(this.addedItems); }
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace RangeTree
         /// </value>
         public int Count
         {
-            get { return rangeTree.Count + addedItemsRebuilding.Count + addedItems.Count; }
+            get { return this.rangeTree.Count + this.addedItemsRebuilding.Count + this.addedItems.Count; }
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace RangeTree
         /// <param name="rangeComparer">The range comparer.</param>
         public RangeTreeAsync(IComparer<T> rangeComparer)
         {
-            rangeTree = new RangeTree<TKey, T>(rangeComparer) { AutoRebuild = false };
+            this.rangeTree = new RangeTree<TKey, T>(rangeComparer) { AutoRebuild = false };
             this.rangeComparer = rangeComparer;
         }
 
@@ -66,7 +66,7 @@ namespace RangeTree
         /// <param name="rangeComparer">The range comparer.</param>
         public RangeTreeAsync(IEnumerable<T> items, IComparer<T> rangeComparer)
         {
-            rangeTree = new RangeTree<TKey, T>(items, rangeComparer) { AutoRebuild = false };
+            this.rangeTree = new RangeTree<TKey, T>(items, rangeComparer) { AutoRebuild = false };
             this.rangeComparer = rangeComparer;
         }
 
@@ -78,21 +78,21 @@ namespace RangeTree
         public List<T> Query(TKey value)
         {
             // check if we need to start a rebuild task
-            if (NeedsRebuild())
+            if (this.NeedsRebuild())
             {
-                RebuildTree();
+                this.RebuildTree();
             }
 
-            lock (locker)
+            lock (this.locker)
             {
                 // query the tree (may be out of date)
-                var results = rangeTree.Query(value);
+                var results = this.rangeTree.Query(value);
 
                 // add additional results
-                results.AddRange(addedItemsRebuilding.Where(item => item.Range.Contains(value)));
-                results.AddRange(addedItems.Where(item => item.Range.Contains(value)));
+                results.AddRange(this.addedItemsRebuilding.Where(item => item.Range.Contains(value)));
+                results.AddRange(this.addedItems.Where(item => item.Range.Contains(value)));
 
-                return FilterResults(results);
+                return this.FilterResults(results);
             }
         }
 
@@ -104,21 +104,21 @@ namespace RangeTree
         public List<T> Query(Range<TKey> range)
         {
             // check if we need to start a rebuild task
-            if (NeedsRebuild())
+            if (this.NeedsRebuild())
             {
-                RebuildTree();
+                this.RebuildTree();
             }
 
-            lock (locker)
+            lock (this.locker)
             {
                 // query the tree (may be out of date)
-                var results = rangeTree.Query(range);
+                var results = this.rangeTree.Query(range);
 
                  // add additional results
-                results.AddRange(addedItemsRebuilding.Where(item => item.Range.Intersects(range)));
-                results.AddRange(addedItems.Where(item => item.Range.Intersects(range)));
+                results.AddRange(this.addedItemsRebuilding.Where(item => item.Range.Intersects(range)));
+                results.AddRange(this.addedItems.Where(item => item.Range.Intersects(range)));
 
-                return FilterResults(results);
+                return this.FilterResults(results);
             }
         }
 
@@ -129,15 +129,15 @@ namespace RangeTree
         /// <returns>The resulting <see cref="List{T}"/></returns>
         private List<T> FilterResults(List<T> results)
         {
-            if (removedItemsRebuilding.Count > 0 || removedItems.Count > 0)
+            if (this.removedItemsRebuilding.Count > 0 || this.removedItems.Count > 0)
             {
                 var hs = new HashSet<T>(results);
-                foreach (var item in removedItemsRebuilding)
+                foreach (var item in this.removedItemsRebuilding)
                 {
                     hs.Remove(item);
                 }
 
-                foreach (var item in removedItems)
+                foreach (var item in this.removedItems)
                 {
                     hs.Remove(item);
                 }
@@ -154,9 +154,9 @@ namespace RangeTree
         /// <param name="item">The item.</param>
         public void Add(T item)
         {
-            lock (locker)
+            lock (this.locker)
             {
-                addedItems.Add(item);
+                this.addedItems.Add(item);
             }
         }
 
@@ -166,9 +166,9 @@ namespace RangeTree
         /// <param name="items">The items.</param>
         public void Add(IEnumerable<T> items)
         {
-            lock (locker)
+            lock (this.locker)
             {
-                addedItems.AddRange(items);
+                this.addedItems.AddRange(items);
             }
         }
 
@@ -178,9 +178,9 @@ namespace RangeTree
         /// <param name="item">The item.</param>
         public void Remove(T item)
         {
-            lock (locker)
+            lock (this.locker)
             {
-                removedItems.Add(item);
+                this.removedItems.Add(item);
             }
         }
 
@@ -190,9 +190,9 @@ namespace RangeTree
         /// <param name="items">The items.</param>
         public void Remove(IEnumerable<T> items)
         {
-            lock (locker)
+            lock (this.locker)
             {
-                removedItems.AddRange(items);
+                this.removedItems.AddRange(items);
             }
         }
 
@@ -201,17 +201,17 @@ namespace RangeTree
         /// </summary>
         public void Clear()
         {
-            lock (locker)
+            lock (this.locker)
             {
-                rangeTree.Clear();
-                addedItems = new List<T>();
-                removedItems = new List<T>();
-                addedItemsRebuilding = new List<T>();
-                removedItemsRebuilding = new List<T>();
+                this.rangeTree.Clear();
+                this.addedItems = new List<T>();
+                this.removedItems = new List<T>();
+                this.addedItemsRebuilding = new List<T>();
+                this.removedItemsRebuilding = new List<T>();
 
-                if (rebuildTaskCancelSource != null)
+                if (this.rebuildTaskCancelSource != null)
                 {
-                    rebuildTaskCancelSource.Cancel();
+                    this.rebuildTaskCancelSource.Cancel();
                 }
             }
         }
@@ -221,9 +221,9 @@ namespace RangeTree
         /// </summary>
         public void Rebuild()
         {
-            if (NeedsRebuild())
+            if (this.NeedsRebuild())
             {
-                RebuildTree();
+                this.RebuildTree();
             }
         }
 
@@ -232,70 +232,70 @@ namespace RangeTree
         /// </summary>
         private void RebuildTree()
         {
-            lock (locker)
+            lock (this.locker)
             {
                 // if a rebuild is in progress return
-                if (isRebuilding || addedItems.Count == 0)
+                if (this.isRebuilding || this.addedItems.Count == 0)
                 {
                     return;
                 }
 
-                isRebuilding = true;
+                this.isRebuilding = true;
             }
 
-            rebuildTaskCancelSource = new CancellationTokenSource();
+            this.rebuildTaskCancelSource = new CancellationTokenSource();
 
-            rebuildTask = Task.Factory.StartNew(
+            this.rebuildTask = Task.Factory.StartNew(
                 () =>
                 {
-                    lock (locker)
+                    lock (this.locker)
                     {
                         // store the items to be added, we need this if a query takes places
                         // before we are finished rebuilding
-                        addedItemsRebuilding = addedItems.ToList();
-                        addedItems.Clear();
+                        this.addedItemsRebuilding = this.addedItems.ToList();
+                        this.addedItems.Clear();
 
                         // store the items to be removed ...
-                        removedItemsRebuilding = removedItemsRebuilding.ToList();
-                        removedItems.Clear();
+                        this.removedItemsRebuilding = this.removedItemsRebuilding.ToList();
+                        this.removedItems.Clear();
                     }
 
                     // all items of the tree
-                    var allItems = rangeTree.Items.ToList();
-                    allItems.AddRange(addedItemsRebuilding);
+                    var allItems = this.rangeTree.Items.ToList();
+                    allItems.AddRange(this.addedItemsRebuilding);
 
                     // we may have to remove some
-                    foreach (var item in removedItemsRebuilding)
+                    foreach (var item in this.removedItemsRebuilding)
                     {
                         allItems.Remove(item);
                     }
 
                     // build the new tree
-                    var newTree = new RangeTree<TKey, T>(allItems, rangeComparer) { AutoRebuild = false };
+                    var newTree = new RangeTree<TKey, T>(allItems, this.rangeComparer) { AutoRebuild = false };
 
                     // if task was not cancelled, set the new tree as the current one
-                    if (!rebuildTaskCancelSource.Token.IsCancellationRequested)
+                    if (!this.rebuildTaskCancelSource.Token.IsCancellationRequested)
                     {
-                        lock (locker)
+                        lock (this.locker)
                         {
-                            rangeTree = newTree;
-                            addedItemsRebuilding.Clear();
-                            removedItemsRebuilding.Clear();
+                            this.rangeTree = newTree;
+                            this.addedItemsRebuilding.Clear();
+                            this.removedItemsRebuilding.Clear();
                         }
                     }
                     else
                     {
                         // nop
                     }
-                }, rebuildTaskCancelSource.Token)
+                }, this.rebuildTaskCancelSource.Token)
             .ContinueWith(task =>
             {
                 // done with rebuilding, do we need to start again?
-                isRebuilding = false;
+                this.isRebuilding = false;
 
-                if (NeedsRebuild())
+                if (this.NeedsRebuild())
                 {
-                    RebuildTree();
+                    this.RebuildTree();
                 }
             });
         }
@@ -306,11 +306,11 @@ namespace RangeTree
         /// <returns>[true] is needs rebuild, otherwise [false]</returns>
         private bool NeedsRebuild()
         {
-            lock (locker)
+            lock (this.locker)
             {
                 // only if count of added or removed items is > 100
                 // otherwise, the sequential query is ok
-                return addedItems.Count > 100 || removedItems.Count > 100;
+                return this.addedItems.Count > 100 || this.removedItems.Count > 100;
             }
         }
     }

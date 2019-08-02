@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace RangeTree
+﻿namespace RangeTree
 {
+    using System;
+
     /// <summary>
     /// Interface for classes which provide a range.
     /// </summary>

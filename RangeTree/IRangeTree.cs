@@ -1,78 +1,72 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace RangeTree
+﻿namespace RangeTree
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// Range tree interface.
+    /// Defines the <see cref="IRangeTree{TKey, T}" />
     /// </summary>
-    /// <typeparam name="TKey">The type of the range.</typeparam>
-    /// <typeparam name="T">The type of the data items.</typeparam>
+    /// <typeparam name="TKey"></typeparam>
+    /// <typeparam name="T"></typeparam>
     public interface IRangeTree<TKey, T>
         where TKey : IComparable<TKey>
         where T : IRangeProvider<TKey>
     {
         /// <summary>
-        /// Gets the items.
+        /// Gets the Items
         /// </summary>
-        /// <value>
-        /// The items.
-        /// </value>
         IEnumerable<T> Items { get; }
 
         /// <summary>
-        /// Gets the count.
+        /// Gets the Count
         /// </summary>
-        /// <value>
-        /// The count.
-        /// </value>
         int Count { get; }
 
         /// <summary>
-        /// Queries the specified value.
+        /// The Query
         /// </summary>
-        /// <param name="value">The value.</param>
-        /// <returns></returns>
+        /// <param name="value">The value<see cref="TKey"/></param>
+        /// <returns>The <see cref="List{T}"/></returns>
         List<T> Query(TKey value);
 
         /// <summary>
-        /// Queries the specified range.
+        /// The Query
         /// </summary>
-        /// <param name="range">The range.</param>
-        /// <returns></returns>
+        /// <param name="range">The range<see cref="Range{TKey}"/></param>
+        /// <returns>The <see cref="List{T}"/></returns>
         List<T> Query(Range<TKey> range);
 
         /// <summary>
-        /// Rebuilds this instance.
+        /// The Rebuild
         /// </summary>
         void Rebuild();
 
         /// <summary>
-        /// Adds the specified item.
+        /// The Add
         /// </summary>
-        /// <param name="item">The item.</param>
+        /// <param name="item">The item<see cref="T"/></param>
         void Add(T item);
 
         /// <summary>
-        /// Adds the specified items.
+        /// The Add
         /// </summary>
-        /// <param name="items">The items.</param>
+        /// <param name="items">The items<see cref="IEnumerable{T}"/></param>
         void Add(IEnumerable<T> items);
 
         /// <summary>
-        /// Removes the specified item.
+        /// The Remove
         /// </summary>
-        /// <param name="item">The item.</param>
+        /// <param name="item">The item<see cref="T"/></param>
         void Remove(T item);
 
         /// <summary>
-        /// Removes the specified items.
+        /// The Remove
         /// </summary>
-        /// <param name="items">The items.</param>
+        /// <param name="items">The items<see cref="IEnumerable{T}"/></param>
         void Remove(IEnumerable<T> items);
 
         /// <summary>
-        /// Clears this instance.
+        /// The Clear
         /// </summary>
         void Clear();
     }
