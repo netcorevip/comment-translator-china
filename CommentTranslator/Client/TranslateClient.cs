@@ -24,7 +24,7 @@ namespace CommentTranlsator.Client
         }
 
         /// <summary>
-        /// 配置参数值赋值
+        /// 传入待翻译文本，返回翻译内容
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
