@@ -11,7 +11,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 
 namespace CommentTranlsator.Client
 {
-    public class TranslateClient : ApiClient
+    public class TranslateClient : ApiClient, ITranslateClient
     {
         private const string CONTENT_TYPE = "application/text";
         private const string CHARSET = "UTF-8";

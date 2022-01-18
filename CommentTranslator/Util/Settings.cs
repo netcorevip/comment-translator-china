@@ -20,6 +20,7 @@ namespace CommentTranslator.Util
         public string TranslateTo { get; set; }
         public bool AutoDetect { get; set; }
         public bool AutoTranslateComment { get; set; }
+        public RequestMode RequestMode { get; set; }
         /// <summary>
         /// 刷新设置的值
         /// </summary>
@@ -32,6 +33,7 @@ namespace CommentTranslator.Util
             this.AutoDetect = page.AutoDetect;
             this.AutoTranslateComment = page.AutoTranslateComment;
             this.TKK = page.TKK;
+            this.RequestMode = page.RequestMode;
         }
     }
 }

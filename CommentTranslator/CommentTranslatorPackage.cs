@@ -50,7 +50,7 @@ namespace CommentTranslator
         /// </summary>
         public const string PackageGuidString = "2e2206c4-ab10-44d9-a016-aedfe6a8975f";
         public static Settings Settings = new Settings();
-        public static TranslateClient TranslateClient;
+        public static ITranslateClient TranslateClient;
 
         public DTE2 DTE { get; set; }
         public Events Events { get; set; }
@@ -94,7 +94,14 @@ namespace CommentTranslator
             Settings.ReloadSetting((OptionPageGrid)GetDialogPage(typeof(OptionPageGrid)));
 
             //创建连接返回翻译内容
-            TranslateClient = new TranslateClient(Settings);
+            if (Settings.RequestMode == RequestMode.Api)
+            {
+                TranslateClient = new TranslateClient(Settings);//new TranslateClient(Settings);
+            }
+            else
+            {
+                TranslateClient = new HtmlAnalysisTranslateClient(Settings);
+            }
 
             DTE = (DTE2)GetService(typeof(DTE));
             Events = DTE.Events;

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="4E1009A3-D979-453E-B492-7381603678F6" Version="1.1" Language="zh-CN" Publisher="Jia" />
+        <Identity Id="4E495448-60FF-4C40-B1DE-8948FF216EC5" Version="1.2" Language="zh-CN" Publisher="xiaoshenxian" />
         <DisplayName>Comment Translator China</DisplayName>
         <Description xml:space="preserve">Extension of visual studio that automatic translate comment in you open file.</Description>
         <License>Resources\LICENSE.txt</License>
