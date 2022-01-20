@@ -19,6 +19,14 @@ namespace CommentTranslator.Option
         /// 谷歌TKK
         /// </summary>
         [Category("Server")]
+        [DisplayName("请求模式")]
+        [Description("设置请求模式,Api模式需要设置TKK值请求谷歌翻译api，Html模式模拟网页调用谷歌翻译解析网页数据")]
+        public RequestMode RequestMode { get; set; } = RequestMode.Api;
+
+        /// <summary>
+        /// 谷歌TKK
+        /// </summary>
+        [Category("Server")]
         [DisplayName("谷歌TKK")]
         [Description("设置谷歌TKK参数")]
         public string TKK { get; set; }
@@ -79,7 +87,8 @@ namespace CommentTranslator.Option
             // C#中MessageBox用法大全（附效果图）
             //https://www.cnblogs.com/rooly/articles/1910063.html
 
-            if (string.IsNullOrWhiteSpace(TKK))
+
+            if (RequestMode != RequestMode.Html && string.IsNullOrWhiteSpace(TKK))
             {
 
                 MessageBox.Show("请先设置TKK值！", "系统提示");
@@ -92,7 +101,11 @@ namespace CommentTranslator.Option
         //【小试插件开发】给Visual Studio装上自己定制的功能来提高代码调试效率
         //https://www.cnblogs.com/hohoa/p/6617619.html?utm_source=gold_browser_extension
 
+    }
 
-
+    public enum RequestMode
+    {
+        Api,
+        Html
     }
 }
