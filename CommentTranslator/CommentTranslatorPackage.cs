@@ -4,7 +4,6 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using CommentTranlsator.Client;
@@ -14,8 +13,6 @@ using CommentTranslator.Util;
 using EnvDTE80;
 using EnvDTE;
 using System.Diagnostics;
-using System.Globalization;
-using Microsoft.VisualStudio.Shell.Interop;
 
 namespace CommentTranslator
 {
@@ -80,6 +77,7 @@ namespace CommentTranslator
         /// <summary>
         /// Initialization of the package; this method is called right after the package is sited, so this is the place
         /// where you can put all the initialization code that rely on services provided by VisualStudio.
+        /// 扩展初始化加载
         /// </summary>
         protected override void Initialize()
         {
@@ -92,6 +90,7 @@ namespace CommentTranslator
 
             //加载配置项
             Settings.ReloadSetting((OptionPageGrid)GetDialogPage(typeof(OptionPageGrid)));
+           
 
             //创建连接返回翻译内容
             if (Settings.RequestMode == RequestMode.Api)
@@ -134,6 +133,8 @@ namespace CommentTranslator
         {
             Debug.WriteLine("Open: " + Document.Name);
         }
+
+
 
 
 

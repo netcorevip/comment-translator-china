@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.Utilities;
 using System;
 using System.ComponentModel.Composition;
 
+
 namespace CommentTranslator.Ardonment
 {
     /// <summary>

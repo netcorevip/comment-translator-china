@@ -51,7 +51,7 @@ namespace CommentTranslator
             }
         }
 
- 
+
         public static GetTKKCommand Instance
         {
             get;
@@ -85,8 +85,16 @@ namespace CommentTranslator
 
                 if (!string.IsNullOrWhiteSpace(TKK))
                 {
+                    try
+                    {
+                        //处理权限不足无法写入问题
+                        Clipboard.SetDataObject(TKK.Trim(), true); //关闭程序保留剪贴板内容
+                    }
+                    catch (Exception exception)
+                    {
 
-                    Clipboard.SetDataObject(TKK.Trim(), true); //关闭程序保留剪贴板内容
+                    }
+
                     OptionPageGrid page = (OptionPageGrid)this.package.GetDialogPage(typeof(OptionPageGrid));
                     page.TKK = TKK;
                     page.SaveSettingsToStorage();

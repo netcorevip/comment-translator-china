@@ -60,6 +60,14 @@ namespace CommentTranslator.Option
         [Description("打开文件时自动翻译注释")]
         public bool AutoTranslateComment { get; set; } = false;
 
+        [Category("Translate")]
+        [DisplayName("手动翻译自动复制")]
+        [Description("手动翻译自动复制内容到剪切板")]
+        public bool AutoTextCopy { get; set; } = false;
+
+
+
+
         protected override void OnApply(PageApplyEventArgs e)
         {
             base.OnApply(e);
@@ -79,20 +87,19 @@ namespace CommentTranslator.Option
             // C#中MessageBox用法大全（附效果图）
             //https://www.cnblogs.com/rooly/articles/1910063.html
 
+
             if (RequestMode != RequestMode.Html && string.IsNullOrWhiteSpace(TKK))
             {
 
                 MessageBox.Show("请先设置TKK值！", "系统提示");
                 //   return;
             }
-
+            //刷新值
             CommentTranslatorPackage.Settings.ReloadSetting(this);
         }
 
         //【小试插件开发】给Visual Studio装上自己定制的功能来提高代码调试效率
         //https://www.cnblogs.com/hohoa/p/6617619.html?utm_source=gold_browser_extension
-
-
 
     }
 

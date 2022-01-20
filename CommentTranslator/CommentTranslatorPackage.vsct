@@ -2,13 +2,13 @@
 <CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 
-  <Extern href="stdidcmd.h"/>
-  <Extern href="vsshlids.h"/>
+  <Extern href="stdidcmd.h" />
+  <Extern href="vsshlids.h" />
 
   <Commands package="guidCommentTranslatorPackage">
 
     <Groups>
-      <Group guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200"/>
+      <Group guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200" />
       <Group guid="guidCommentTranslatorPackageCmdSet" id="MyMenuToolGroup" priority="0x0800">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
       </Group>
@@ -41,17 +41,17 @@
 
       <Button guid="guidCommentTranslatorPackageCmdSet" id="GetTKKId" priority="0x0100" type="Button">
         <Parent guid="guidCommentTranslatorPackageCmdSet" id="MyMenuToolGroup" />
-        <Icon guid="guidImages" id="bmpPic1"/>
+        <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
           <ButtonText>设置TKK值</ButtonText>
         </Strings>
       </Button>
 
-    </Buttons>
+     </Buttons>
 
 
     <Bitmaps>
-      <Bitmap guid="guidImages" href="Resources\translate.png" usedList="bmpPic1"/>
+      <Bitmap guid="guidImages" href="Resources\translate.png" usedList="bmpPic1" />
     </Bitmaps>
   </Commands>
 
@@ -102,25 +102,25 @@
       <Parent guid="CMDSETID_CssEdGrp" id="IDM_CTX_SOURCE" />
     </CommandPlacement>
     <CommandPlacement guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200">
-      <Parent guid="XamlEditorWindows" id="IDMX_XAML_SOURCE_BASIC"/>
+      <Parent guid="XamlEditorWindows" id="IDMX_XAML_SOURCE_BASIC" />
     </CommandPlacement>
     <!--new-->
     <CommandPlacement guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200">
-      <Parent guid="GuidVisualStudioHTMLDocumentContextMenu" id="IDVisualStudioHTMLDocumentContextMenu"/>
+      <Parent guid="GuidVisualStudioHTMLDocumentContextMenu" id="IDVisualStudioHTMLDocumentContextMenu" />
     </CommandPlacement>
     <CommandPlacement guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200">
-      <Parent guid="GuidVisualStudioCSSDocumentContextMenu" id="IDVisualStudioCSSDocumentContextMenu"/>
+      <Parent guid="GuidVisualStudioCSSDocumentContextMenu" id="IDVisualStudioCSSDocumentContextMenu" />
     </CommandPlacement>
 
     <CommandPlacement guid="guidCommentTranslatorPackageCmdSet" id="MyMenuGroup" priority="0x0200">
-      <Parent guid="jsEditorCommandSet" id="jsContextMenu"/>
+      <Parent guid="jsEditorCommandSet" id="jsContextMenu" />
     </CommandPlacement>
   </CommandPlacements>
 
   <!--绑定快捷键-->
   <KeyBindings>
-    <KeyBinding guid="guidCommentTranslatorPackageCmdSet" id="CommentTranslatorId" key1="Z" mod1="ALT" editor="guidVSStd97"/>
-    <KeyBinding guid="guidCommentTranslatorPackageCmdSet" id="ToggleAutoTranslatorId" key1="Z" mod1="ALT Shift" editor="guidVSStd97"/>
+    <KeyBinding guid="guidCommentTranslatorPackageCmdSet" id="CommentTranslatorId" key1="Z" mod1="ALT" editor="guidVSStd97" />
+    <KeyBinding guid="guidCommentTranslatorPackageCmdSet" id="ToggleAutoTranslatorId" key1="Z" mod1="ALT Shift" editor="guidVSStd97" />
   </KeyBindings>
 
   <Symbols>
@@ -173,14 +173,14 @@
       <IDSymbol name="IDVisualStudioJSONDocumentContextMenu" value="0x3" />
     </GuidSymbol>
     <GuidSymbol name="XamlEditorWindows" value="{4C87B692-1202-46AA-B64C-EF01FAEC53DA}">
-      <IDSymbol name="IDMX_XAML_SOURCE_BASIC" value="0x0103"/>
+      <IDSymbol name="IDMX_XAML_SOURCE_BASIC" value="0x0103" />
     </GuidSymbol>
     <GuidSymbol name="jsEditorCommandSet" value="{D309F791-903F-11D0-9EFC-00A0C911004F}">
-      <IDSymbol name="jsContextMenu" value="0x040d"/>
+      <IDSymbol name="jsContextMenu" value="0x040d" />
       <!-- 52 in hex is 0x0034 -->
     </GuidSymbol>
 
-    <GuidSymbol name="guidImages" value="{7739b59e-19f6-420e-8597-8af69c377a6a}" >
+    <GuidSymbol name="guidImages" value="{7739b59e-19f6-420e-8597-8af69c377a6a}">
       <IDSymbol name="bmpPic1" value="1" />
     </GuidSymbol>
   </Symbols>

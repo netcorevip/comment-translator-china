@@ -76,6 +76,7 @@ namespace CommentTranslator
 
         /// <summary>
         /// Gets the service provider from the owner package.
+        /// 从所有者包中获取服务提供者。
         /// </summary>
         private IServiceProvider ServiceProvider
         {
@@ -107,6 +108,7 @@ namespace CommentTranslator
         /// <param name="e">Event args.</param>
         private void MenuItemCallback(object sender, EventArgs e)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             Settings settings = new Settings();
             //获取配置值，赋值验证TKK
             settings.ReloadSetting((OptionPageGrid)package.GetDialogPage(typeof(OptionPageGrid)));

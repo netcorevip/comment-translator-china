@@ -21,19 +21,31 @@ namespace CommentTranslator.Util
         public bool AutoDetect { get; set; }
         public bool AutoTranslateComment { get; set; }
         public RequestMode RequestMode { get; set; }
+        public bool AutoTextCopy { get; set; }
+
         /// <summary>
         /// 刷新设置的值
         /// </summary>
         /// <param name="page"></param>
         public void ReloadSetting(OptionPageGrid page)
         {
-            this.TranslateUrl ="" ;//page.TranslateUrl;
-            this.TranslateFrom = page.TranslateFrom;
-            this.TranslateTo = page.TranslatetTo;
-            this.AutoDetect = page.AutoDetect;
-            this.AutoTranslateComment = page.AutoTranslateComment;
-            this.TKK = page.TKK;
-            this.RequestMode = page.RequestMode;
+
+          //  this.TranslateUrl ="" ;//page.TranslateUrl;
+          //  this.TranslateFrom = page.TranslateFrom;
+          //  this.TranslateTo = page.TranslatetTo;
+          //  this.AutoDetect = page.AutoDetect;
+          //  this.AutoTranslateComment = page.AutoTranslateComment;
+          //  this.TKK = page.TKK;
+          //  this.RequestMode = page.RequestMode;
+
+            TranslateUrl = "";//page.TranslateUrl;
+            TranslateFrom = page.TranslateFrom;
+            TranslateTo = page.TranslatetTo;
+            AutoDetect = page.AutoDetect;
+            AutoTranslateComment = page.AutoTranslateComment;
+            TKK = page.TKK;
+            AutoTextCopy = page.AutoTextCopy;
+
         }
     }
 }

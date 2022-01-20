@@ -1,7 +1,9 @@
-﻿using System;
+﻿
 
 namespace RangeTree
 {
+    using System;
+
     /// <summary>
     /// Represents a range of values. Both values must be of the same type and comparable.
     /// </summary>
@@ -31,8 +33,8 @@ namespace RangeTree
                 throw new ArgumentOutOfRangeException($"{nameof(from)} cannot be larger than {nameof(to)}");
             }
 
-            From = from;
-            To = to;
+            this.From = from;
+            this.To = to;
         }
 
         /// <summary>
@@ -60,7 +62,7 @@ namespace RangeTree
         /// </returns>
         public bool Contains(T value)
         {
-            return value.CompareTo(From) >= 0 && value.CompareTo(To) <= 0;
+            return value.CompareTo(this.From) >= 0 && value.CompareTo(this.To) <= 0;
         }
 
         /// <summary>
@@ -72,7 +74,7 @@ namespace RangeTree
         /// </returns>
         public bool ContainsExclusive(T value)
         {
-            return value.CompareTo(From) > 0 && value.CompareTo(To) < 0;
+            return value.CompareTo(this.From) > 0 && value.CompareTo(this.To) < 0;
         }
 
         /// <summary>
@@ -82,7 +84,7 @@ namespace RangeTree
         /// <returns>[true] if intesecting, otherwise [false]</returns>
         public bool Intersects(Range<T> other)
         {
-            return other.To.CompareTo(From) >= 0 && other.From.CompareTo(To) <= 0;
+            return other.To.CompareTo(this.From) >= 0 && other.From.CompareTo(this.To) <= 0;
         }
 
         /// <summary>
@@ -92,7 +94,7 @@ namespace RangeTree
         /// <returns>[true] if intesecting, otherwise [false]</returns>
         public bool IntersectsExclusive(Range<T> other)
         {
-            return other.To.CompareTo(From) > 0 && other.From.CompareTo(To) < 0;
+            return other.To.CompareTo(this.From) > 0 && other.From.CompareTo(this.To) < 0;
         }
 
         /// <summary>
@@ -110,7 +112,7 @@ namespace RangeTree
                 return false;
             }
 
-            return range.From.Equals(From) && range.To.Equals(To);
+            return range.From.Equals(this.From) && range.To.Equals(this.To);
         }
 
         /// <summary>
@@ -121,7 +123,7 @@ namespace RangeTree
         /// </returns>
         public override string ToString()
         {
-            return string.Format("{0} - {1}", From, To);
+            return string.Format("{0} - {1}", this.From, this.To);
         }
 
         /// <summary>
@@ -133,8 +135,8 @@ namespace RangeTree
         public override int GetHashCode()
         {
             int hash = 23;
-            hash = (hash * 37) + From.GetHashCode();
-            hash = (hash * 37) + To.GetHashCode();
+            hash = (hash * 37) + this.From.GetHashCode();
+            hash = (hash * 37) + this.To.GetHashCode();
             return hash;
         }
 
@@ -147,19 +149,19 @@ namespace RangeTree
         /// </returns>
         public int CompareTo(Range<T> other)
         {
-            if (From.CompareTo(other.From) < 0)
+            if (this.From.CompareTo(other.From) < 0)
             {
                 return -1;
             }
-            else if (From.CompareTo(other.From) > 0)
+            else if (this.From.CompareTo(other.From) > 0)
             {
                 return 1;
             }
-            else if (To.CompareTo(other.To) < 0)
+            else if (this.To.CompareTo(other.To) < 0)
             {
                 return -1;
             }
-            else if (To.CompareTo(other.To) > 0)
+            else if (this.To.CompareTo(other.To) > 0)
             {
                 return 1;
             }

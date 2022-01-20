@@ -10,6 +10,7 @@ namespace CommentTranslator.Ardonment
 {
     /// <summary>
     /// Adornment class that draws a square box in the top right hand corner of the viewport
+    /// 装饰类，在视口的右上角绘制一个方框
     /// </summary>
     internal sealed class TranslatePopupAdornment
     {

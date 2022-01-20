@@ -15,6 +15,7 @@ namespace CommentTranslator.Presentation
 
         private bool _isClose = false;
 
+       
         #endregion
 
         #region Contructors
@@ -23,7 +24,6 @@ namespace CommentTranslator.Presentation
         {
             Span = span.Snapshot.CreateTrackingSpan(span, SpanTrackingMode.EdgeExclusive);
             Text = text;
-
             InitializeComponent();
 
             SetMaxSize(viewportSize);
@@ -53,16 +53,16 @@ namespace CommentTranslator.Presentation
         }
 
         /// <summary>
-        /// 手动选择显示翻译内容
+        /// 手动选择或光标所在行，显示翻译内容
         /// </summary>
-        /// <param name="text"></param>
+        /// <param name="text">鼠标选中文本或光标所在行的文本</param>
         private void Translate(string text)
         {
             bdError.Visibility = Visibility.Collapsed;
             bdTranslatedText.Visibility = Visibility.Collapsed;
             tblDirection.Text = "翻译中...";
 
-            Task.Run(() => CommentTranslatorPackage.TranslateClient.Translate(text))
+            System.Threading.Tasks.Task.Run(() => CommentTranslatorPackage.TranslateClient.Translate(text))
                 .ContinueWith((data) =>
                 {
                     if (!_isClose)
@@ -70,11 +70,24 @@ namespace CommentTranslator.Presentation
                         if (!data.IsFaulted)
                         {
                             if (data.Result.Code == 200)
-                            //  if (data.Result.Code == 200 && (bool)data.Result.Tags["translate-success"])
                             {
+                                //弹窗提示
                                 tblDirection.Text = string.Format("{0} -> {1}", data.Result.Tags["from-language"].ToString().ToLower(), data.Result.Tags["to-language"].ToString().ToLower());
                                 tblTranslatedText.Text = data.Result.Data;
                                 bdTranslatedText.Visibility = Visibility.Visible;
+                                try
+                                {
+
+                                    if (CommentTranslatorPackage.Settings.AutoTextCopy)  //包初始化的时候赋值
+                                    {
+                                        Clipboard.SetText(data.Result.Data);
+                                    }
+
+                                }
+                                catch (Exception e)
+                                {
+
+                                }
                             }
                             else
                             {
